@@ -1,0 +1,17 @@
+header {
+    width: 100%;
+    background: deepskyblue;
+    height: 60px;
+}
+
+header > .brandName {
+    color: white;
+    height: 60px;
+    line-height: 60px;
+    vertical-align: middle;
+    margin: 0 20px;
+}
+
+@media screen and (min-width: 280px) and (max-width: 320px) {
+
+}
