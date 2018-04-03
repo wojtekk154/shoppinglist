@@ -1,1 +1,1 @@
-export const LINKS = [{path: '/', name: 'Home'}, {path: '/list', name: 'Your Lists'}, {path: '/list/add', name: 'AddList'}];
+export const LINKS = [{path: '/', name: 'Home'}, {path: '/list', name: 'Your Lists'}, {path: '/list/new', name: 'New List'}];

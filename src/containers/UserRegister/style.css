@@ -1,0 +1,14 @@
+.register-form-container {
+    margin: 20px;
+    height: 100%;
+    width: 100%;
+}
+
+.register-form-container .register-form {
+    width: 90%;
+    margin: auto;
+}
+
+.register-form-container .register-form .inputField {
+    margin: 20px 0;
+}

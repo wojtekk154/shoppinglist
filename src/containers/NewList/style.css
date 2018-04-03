@@ -1,0 +1,26 @@
+.list-container {
+    margin-top: 40px;
+    padding: 10px;
+}
+
+.list-container .input-section {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.list-container .input-section .input-item {
+ width: 85%;
+    float: left;
+}
+.list-container .input-section .input-button {
+    width: 14%;
+    float: left;
+}
+
+.remove-product {
+    border: none;
+    background: none;
+    color: red;
+    font-weight: bold;
+    float: right;
+}

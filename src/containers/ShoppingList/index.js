@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from "react-redux";
 
-class Home extends React.Component {
+class ShoppingList extends React.Component {
 
     render(){
         return (
@@ -11,17 +10,7 @@ class Home extends React.Component {
     }
 }
 
-function mapStateToProps(state) {
-    return {};
-}
-
-function mapDispatchToProps(dispatch) {
-    return dispatch => {
-        dispatch
-    }
-}
-
-Home.propTypes = {
+ShoppingList.propTypes = {
 
 };
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default ShoppingList;

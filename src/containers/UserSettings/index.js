@@ -1,6 +1,6 @@
 import React from 'react';
 
-class CurrentList extends React.Component {
+class UserSettings extends React.Component {
 
     render() {
         return (
@@ -9,6 +9,6 @@ class CurrentList extends React.Component {
     }
 }
 
-CurrentList.propTypes = {};
+UserSettings.propTypes = {};
 
-export default CurrentList;
+export default UserSettings;

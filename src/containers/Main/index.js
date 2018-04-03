@@ -5,6 +5,7 @@ import Drawer from 'material-ui/Drawer';
 
 import {Header, MenuUrlLinks} from '../../components';
 import * as constants from '../../constants';
+import {Routes} from "../../components";
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -29,8 +30,11 @@ class MainContainer extends React.Component {
                 <Header brandName="ShoppingList" handleDrawer={this.handleDrawer}/>
                 <Drawer open={this.state.drawer}>
                     <RaisedButton label="Material UI" onClick={this.handleDrawer} />
-                    <MenuUrlLinks linkList={constants.LINKS} handleDrawer={this.handleDrawer}/>
+                    <MenuUrlLinks linkList={constants.LINKS} handleDrawer={this.handleDrawer} />
                 </Drawer>
+                <section className="container">
+                    <Routes />
+                </section>
             </React.Fragment>
         );
     }
