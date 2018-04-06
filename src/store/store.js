@@ -1,18 +1,17 @@
 import {applyMiddleware, compose, createStore} from 'redux';
+import { createEpicMiddleware } from 'redux-observable';
 import loggerMiddleware from 'redux-logger';
 import thunkMiddleware from 'redux-thunk';
 
 import appReducers from '../reducers/index';
 
-const INITIAL_STATE = {};
+const epicMiddleware = createEpicMiddleware(rootEpic);
 
-const configureStore = (INITIAL_STATE) => {
+export const configureStore = (initial_state) => {
     const enhancer = compose(applyMiddleware(
         loggerMiddleware,
         thunkMiddleware
     ));
 
-    return createStore(appReducers, INITIAL_STATE, enhancer);
+    return createStore(appReducers, initial_state, enhancer);
 };
-
-export default configureStore;
