@@ -10,7 +10,13 @@ const INIT_STATE = {
 export function authReducer(state = INIT_STATE, action) {
     switch (action.type) {
         case types.SIGN_IN_USER_SUCCESS_ACTION:
-            return {...action.payload};
+
+            return {
+                email: action.payload.email,
+                accessToken: action.payload.access_token,
+                username: action.payload.username,
+                id: action.payload.id
+            };
         case types.SIGN_UP_USER_SUCCESS_ACTION:
         case types.SIGN_UP_USER_FAILURE_ACTION:
         case types.SIGN_IN_USER_FAILURE_ACTION:

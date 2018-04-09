@@ -1,3 +1,1 @@
-import { combineEpics } from 'redux-observable';
-
-export const AuthEpic = combineEpics();
+export * from './AuthEpic';

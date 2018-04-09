@@ -1,9 +1,7 @@
 import React from 'react';
 import {connect} from "react-redux";
-
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
-
 import * as actions from '../../../actions/Auth';
 import {bindActionCreators} from "redux";
 

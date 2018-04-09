@@ -11,7 +11,7 @@ import {Header, MenuUrlLinks} from '../../components';
 import * as ActionsCreators from '../../actions/Auth';
 import * as constants from '../../constants';
 import AuthContainer from '../Authentication/AuthContainer';
-import SignIn from '../Authentication/SignIn';
+import ShoppingListContainer from '../ShoppingList/ShoppingListContainer';
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -40,6 +40,7 @@ class MainContainer extends React.Component {
                 </Drawer>
                 <main>
                     <Switch>
+                        <Route exact path="/" component={ShoppingListContainer}/>
                         <Route path="/auth" component={AuthContainer} />
                     </Switch>
                 </main>

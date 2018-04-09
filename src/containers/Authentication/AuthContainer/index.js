@@ -1,6 +1,8 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Redirect, Route} from "react-router-dom";
+import {Route} from "react-router-dom";
+
+import {withRouter} from 'react-router-dom';
 
 import SignIn from '../SignIn';
 import SignUp from '../SignUp';
@@ -12,22 +14,31 @@ class AuthContainer extends React.Component {
         super(props);
 
         console.log(props);
+
+        this.isLoggedIn = this.isLoggedIn.bind(this);
     }
 
-    render(){
+    isLoggedIn() {
+        return this.props.session.accessToken !== '';
+    }
+
+    componentDidUpdate() {
+        console.log(this.isLoggedIn());
+        this.isLoggedIn() && this.props.history.push("/", null);
+    }
+
+    render() {
         return (
             <div className="auth-form">
-
-                <Route path="/auth/signin" component={SignIn} />
+                <Route exact path="/auth/signin" component={SignIn} />
                 <Route path="/auth/signup" component={SignUp} />
-                {this.props.session.accessToken !== '' && <Redirect to="/" />}
             </div>
         );
     }
 }
 
-function mapStateToProps(state) {
-    return {...state};
+function mapStateToProps(state, local) {
+    return {...state, ...local};
 }
 
 function mapDispatchToProps(dispatch) {
@@ -36,7 +47,5 @@ function mapDispatchToProps(dispatch) {
     }
 }
 
-AuthContainer.propTypes = {
-
-};
-export default connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
+AuthContainer.propTypes = {};
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthContainer));
