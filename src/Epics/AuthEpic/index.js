@@ -4,16 +4,29 @@ import * as endpoints from '../../constants/endpoints';
 import * as authActions from '../../actions/Auth';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
-import axios from 'axios';
+import 'rxjs/add/operator/takeUntil';
+import 'rxjs/add/operator/switchMap';
+import {ajax} from 'rxjs/observable/dom/ajax';
 import {Observable} from "rxjs/Observable";
 
 export const signInEpic = action$ => {
     return action$.ofType(types.SIGN_IN_USER_ACTION)
-        .mergeMap(action => axios.post(endpoints.SIGNIN_URL, {
-            email: action.payload.email,
-            password: action.payload.password
-        }, {'Content-Type': 'application/json'}))
-        .catch(err =>  Observable.of(authActions.signInFailureAction(err)))
-        .map(resp => authActions.signInSuccessAction(resp.data));
+        .mergeMap(action => ajax.post(endpoints.SIGNIN_URL, action.payload, {'Content-Type': 'application/json'})
+            .map(resp => authActions.signInSuccessAction(resp.response))
+            .catch(err => Observable.of(authActions.signInFailureAction(err)))
+        );
+};
+
+export const signUpEpic = action$ => {
+    return action$.ofType(types.SIGN_UP_USER_ACTION)
+        .mergeMap(action => ajax.post(endpoints.SIGNUP_URL, {
+                email: action.payload.email,
+                username: action.payload.username,
+                password: action.payload.password
+            }, {'Content-Type': 'application/json'})
+                .map(v => authActions.signUpSuccessAction(v.response))
+                .takeUntil(action$.ofType(types.SIGN_UP_USER_ACTION))
+                .catch(err => Observable.of(authActions.signUpFailureAction(err)))
+        );
 };
 

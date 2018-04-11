@@ -1,17 +1,19 @@
 import {applyMiddleware, compose, createStore} from 'redux';
-import {createEpicMiddleware} from 'redux-observable';
+import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import loggerMiddleware from 'redux-logger';
-import thunkMiddleware from 'redux-thunk';
-import {combineEpics} from 'redux-observable';
+
 import * as authEpics from '../Epics/AuthEpic';
 import appReducers from '../reducers';
+import {loadState, saveState} from "./presistState";
 
-
-const rootEpic = combineEpics(authEpics.signInEpic);
+const rootEpic = combineEpics(
+    authEpics.signInEpic,
+    authEpics.signUpEpic
+);
 const epicMiddleware = createEpicMiddleware(rootEpic);
+const enhancer = compose(applyMiddleware(loggerMiddleware, epicMiddleware));
+export const store = createStore(appReducers,(loadState() || {}), enhancer);
 
-export const configureStore = (initial_state) => {
-    const enhancer = compose(applyMiddleware(loggerMiddleware, epicMiddleware));
-
-    return createStore(appReducers, initial_state, enhancer);
-};
+store.subscribe(() => saveState({
+    session: store.getState().session
+}));

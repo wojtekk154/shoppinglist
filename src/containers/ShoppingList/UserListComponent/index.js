@@ -3,10 +3,8 @@ import {connect} from "react-redux";
 
 import * as actions from '../../../components/Routes/List';
 import {bindActionCreators} from "redux";
-import {PrivateRoute} from '../../../components/Routes';
-import {UserListComponentComponent} from '../UserListComponent';
 
-class ShoppingContainer extends React.Component {
+class UserListComponent extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -14,7 +12,12 @@ class ShoppingContainer extends React.Component {
     render() {
         return (
             <React.Fragment>
-wqdwqdwq
+               <span>
+                    ***********************
+                    ****************************
+                    *    ***********************
+                    *********************
+               </span>
             </React.Fragment>
         );
     }
@@ -28,6 +31,6 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-ShoppingContainer.propTypes = {};
-const ShoppingContainerComponent = connect(mapStateToProps, mapDispatchToProps)(ShoppingContainer);
-export {ShoppingContainerComponent};
+UserListComponent.propTypes = {};
+const UserListComponentComponent = connect(mapStateToProps, mapDispatchToProps)(UserListComponent);
+export {UserListComponentComponent};

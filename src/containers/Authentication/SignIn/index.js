@@ -31,6 +31,7 @@ class SignIn extends React.Component {
         return (
             <React.Fragment>
                 <form onSubmit={this.handleSubmit} className="signup-form">
+                    <h2>Sign In</h2>
                     <div className="input-field">
                         <TextField
                             hintText="E-mail"
@@ -68,4 +69,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 SignIn.propTypes = {};
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+
+const SignInComponent = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export {SignInComponent}

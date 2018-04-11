@@ -1,4 +1,4 @@
-import * as types from '../../constants/actions-list';
+import * as types from '../../../constants/actions-list';
 
 export function createListAction(payload) {
     return {

@@ -8,6 +8,10 @@ export const SIGN_UP_USER_ACTION = 'Sign up user action';
 export const SIGN_UP_USER_SUCCESS_ACTION = 'Sign up user success action';
 export const SIGN_UP_USER_FAILURE_ACTION = 'Sign up user failure action';
 
+export const SIGN_OUT_ACTION = 'SIGN_OUT_ACTION';
+export const SIGN_OUT_SUCCESS_ACTION = 'SIGN_OUT_SUCCESS_ACTION';
+export const SIGN_OUT_FAILURE_ACTION = 'SIGN_OUT_FAILURE_ACTION';
+
 export const CREATE_NEW_LIST_ACTION = 'create new list action by user';
 export const CREATE_NEW_LIST_SUCCESS_ACTION = 'create new list success action by user ';
 export const CREATE_NEW_LIST_FAILURE_ACTION = 'create new list failure action by user';

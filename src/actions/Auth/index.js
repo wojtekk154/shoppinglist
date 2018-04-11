@@ -41,3 +41,22 @@ export function signUpFailureAction(payload) {
         payload
     };
 }
+
+export function signOutAction() {
+    return {
+        type: types.SIGN_OUT_ACTION
+    };
+}
+
+
+export function signOutSuccessAction() {
+    return {
+        type: types.SIGN_OUT_SUCCESS_ACTION
+    };
+}
+
+export function signOutFailureAction() {
+    return {
+        type: types.SIGN_OUT_FAILURE_ACTION
+    };
+}

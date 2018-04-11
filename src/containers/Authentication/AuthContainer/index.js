@@ -1,13 +1,12 @@
 import React from 'react';
 import {connect} from "react-redux";
-import {Route} from "react-router-dom";
 
-import {withRouter} from 'react-router-dom';
-
-import SignIn from '../SignIn';
-import SignUp from '../SignUp';
+import * as actions from '../../../actions';
+import {SignInComponent, SignUpComponent} from '../';
+import {PublicRoute} from '../../../components/Routes';
 
 import './index.css';
+import {bindActionCreators} from "redux";
 
 class AuthContainer extends React.Component {
     constructor(props) {
@@ -23,15 +22,12 @@ class AuthContainer extends React.Component {
     }
 
     componentDidUpdate() {
-        console.log(this.isLoggedIn());
-        this.isLoggedIn() && this.props.history.push("/", null);
     }
 
     render() {
         return (
-            <div className="auth-form">
-                <Route exact path="/auth/signin" component={SignIn} />
-                <Route path="/auth/signup" component={SignUp} />
+            <div>
+
             </div>
         );
     }
@@ -42,10 +38,9 @@ function mapStateToProps(state, local) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return dispatch => {
-        dispatch
-    }
+    return bindActionCreators(actions, dispatch);
 }
 
 AuthContainer.propTypes = {};
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthContainer));
+const AuthContainerComponent = connect(mapStateToProps, mapDispatchToProps)(AuthContainer);
+export {AuthContainerComponent}

@@ -10,8 +10,10 @@ import Drawer from 'material-ui/Drawer';
 import {Header, MenuUrlLinks} from '../../components';
 import * as ActionsCreators from '../../actions/Auth';
 import * as constants from '../../constants';
-import AuthContainer from '../Authentication/AuthContainer';
-import ShoppingListContainer from '../ShoppingList/ShoppingListContainer';
+import {ShoppingContainerComponent} from '../ShoppingList';
+import {SignInComponent, SignUpComponent} from "../Authentication";
+import {UserListComponentComponent} from "../ShoppingList";
+import {PrivateRoute, PublicRoute} from "../../components";
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -22,6 +24,11 @@ class MainContainer extends React.Component {
         };
 
         this.handleDrawer = this.handleDrawer.bind(this);
+        this.isLoggedIn = this.isLoggedIn.bind(this);
+    }
+
+    isLoggedIn() {
+        return this.props.session.accessToken !== '';
     }
 
     handleDrawer() {
@@ -40,8 +47,16 @@ class MainContainer extends React.Component {
                 </Drawer>
                 <main>
                     <Switch>
-                        <Route exact path="/" component={ShoppingListContainer}/>
-                        <Route path="/auth" component={AuthContainer} />
+                        <PrivateRoute
+                            auth={this.props.session.accessToken !== ''}
+                            exact={true}
+                            path="/"
+                            Component={UserListComponentComponent}
+                        />
+                        <div className="auth-form">
+                            <PublicRoute auth={this.isLoggedIn()} path="/auth/signin" Component={SignInComponent}/>
+                            <PublicRoute auth={this.isLoggedIn()} path="/auth/signup" Component={SignUpComponent}/>
+                        </div>
                     </Switch>
                 </main>
             </React.Fragment>
@@ -50,7 +65,7 @@ class MainContainer extends React.Component {
 }
 
 
-function mapStateToProps(state, localProps) {
+function mapStateToProps(state) {
     return {...state};
 }
 

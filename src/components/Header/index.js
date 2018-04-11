@@ -10,7 +10,6 @@ export function Header({brandName, handleDrawer}) {
             <AppBar
                 title={brandName}
                 iconClassNameRight="muidocs-icon-navigation-expand-more"
-                onRightIconButtonTouchTap={handleDrawer}
                 onLeftIconButtonClick ={handleDrawer}
             />
         </React.Fragment>
