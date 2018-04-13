@@ -3,10 +3,11 @@ import {connect} from "react-redux";
 
 import * as actions from '../../../actions';
 import {SignInComponent, SignUpComponent} from '../';
-import {PublicRoute} from '../../../components/Routes';
+
+import {bindActionCreators} from "redux";
+import {Redirect, Route} from "react-router-dom";
 
 import './index.css';
-import {bindActionCreators} from "redux";
 
 class AuthContainer extends React.Component {
     constructor(props) {
@@ -21,13 +22,18 @@ class AuthContainer extends React.Component {
         return this.props.session.accessToken !== '';
     }
 
-    componentDidUpdate() {
-    }
-
     render() {
+        if (this.isLoggedIn()) {
+            return (
+                <React.Fragment>
+                    <Redirect to="/user-list"/>
+                </React.Fragment>
+            );
+        }
         return (
-            <div>
-
+            <div className="auth-form">
+                <Route path={`${this.props.match.url}/signin`} component={SignInComponent}/>
+                <Route path={`${this.props.match.url}/signup`} component={SignUpComponent}/>
             </div>
         );
     }

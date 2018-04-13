@@ -1,19 +1,18 @@
 import React from 'react';
 
-import {Route, Switch} from "react-router-dom";
+import {Route, Switch, withRouter} from "react-router-dom";
 import {bindActionCreators} from "redux";
 import {connect} from "react-redux";
 
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 
+import * as actionsCreator  from '../../actions';
+
 import {Header, MenuUrlLinks} from '../../components';
-import * as ActionsCreators from '../../actions/Auth';
 import * as constants from '../../constants';
 import {ShoppingContainerComponent} from '../ShoppingList';
-import {SignInComponent, SignUpComponent} from "../Authentication";
-import {UserListComponentComponent} from "../ShoppingList";
-import {PrivateRoute, PublicRoute} from "../../components";
+import {AuthContainerComponent} from "../Authentication/AuthContainer/index";
 
 class MainContainer extends React.Component {
     constructor(props) {
@@ -47,16 +46,8 @@ class MainContainer extends React.Component {
                 </Drawer>
                 <main>
                     <Switch>
-                        <PrivateRoute
-                            auth={this.props.session.accessToken !== ''}
-                            exact={true}
-                            path="/"
-                            Component={UserListComponentComponent}
-                        />
-                        <div className="auth-form">
-                            <PublicRoute auth={this.isLoggedIn()} path="/auth/signin" Component={SignInComponent}/>
-                            <PublicRoute auth={this.isLoggedIn()} path="/auth/signup" Component={SignUpComponent}/>
-                        </div>
+                        <Route exact path="/" component={ShoppingContainerComponent}/>
+                        <Route path="/auth" component={AuthContainerComponent}/>
                     </Switch>
                 </main>
             </React.Fragment>
@@ -65,14 +56,13 @@ class MainContainer extends React.Component {
 }
 
 
-function mapStateToProps(state) {
-    return {...state};
+function mapStateToProps(state, local) {
+    return {...state, ...local};
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(ActionsCreators, dispatch);
+    return bindActionCreators(actionsCreator, dispatch);
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainContainer));
 
-// export default MainContainer;

@@ -11,8 +11,11 @@ const rootEpic = combineEpics(
     authEpics.signUpEpic
 );
 const epicMiddleware = createEpicMiddleware(rootEpic);
-const enhancer = compose(applyMiddleware(loggerMiddleware, epicMiddleware));
-export const store = createStore(appReducers,(loadState() || {}), enhancer);
+const enhancer = compose(
+    applyMiddleware(loggerMiddleware, epicMiddleware),
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+export const store = createStore(appReducers, (loadState() || {}), enhancer);
 
 store.subscribe(() => saveState({
     session: store.getState().session

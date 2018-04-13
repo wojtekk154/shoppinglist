@@ -11,7 +11,7 @@ import {Observable} from "rxjs/Observable";
 
 export const signInEpic = action$ => {
     return action$.ofType(types.SIGN_IN_USER_ACTION)
-        .mergeMap(action => ajax.post(endpoints.SIGNIN_URL, action.payload, {'Content-Type': 'application/json'})
+        .mergeMap(action => ajax.post(endpoints.SIGNIN_URL, {email: action.payload.email, password: action.payload.password })
             .map(resp => authActions.signInSuccessAction(resp.response))
             .catch(err => Observable.of(authActions.signInFailureAction(err)))
         );
@@ -25,7 +25,6 @@ export const signUpEpic = action$ => {
                 password: action.payload.password
             }, {'Content-Type': 'application/json'})
                 .map(v => authActions.signUpSuccessAction(v.response))
-                .takeUntil(action$.ofType(types.SIGN_UP_USER_ACTION))
                 .catch(err => Observable.of(authActions.signUpFailureAction(err)))
         );
 };

@@ -5,6 +5,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import {bindActionCreators} from "redux";
 
 import * as actions from '../../../actions/Auth';
+import {withRouter} from "react-router-dom";
 
 class SignUp extends React.Component {
     constructor(props) {

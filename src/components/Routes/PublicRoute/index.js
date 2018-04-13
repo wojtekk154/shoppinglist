@@ -4,7 +4,7 @@ import {Redirect, Route} from 'react-router-dom';
 
 const PublicRoute = ({ component: Component, ...rest}) => (
     <React.Fragment>
-        <Route {...rest} render={() => (!auth ? <Component/> : <Redirect to="/"/>)} />
+        {/*<Route {...rest} render={() => (!auth ? <Component/> : <Redirect to="/"/>)} />*/}
     </React.Fragment>
 );
 

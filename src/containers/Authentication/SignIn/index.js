@@ -8,7 +8,7 @@ import {bindActionCreators} from "redux";
 class SignIn extends React.Component {
     constructor(props) {
         super(props);
-        this.state ={
+        this.state = {
             email: '',
             password: ''
         };
@@ -18,7 +18,7 @@ class SignIn extends React.Component {
 
     handleInput(e) {
         this.setState({
-           [e.target.name]: e.target.value
+            [e.target.name]: e.target.value
         });
     }
 

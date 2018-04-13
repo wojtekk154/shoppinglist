@@ -12,12 +12,7 @@ class UserListComponent extends React.Component {
     render() {
         return (
             <React.Fragment>
-               <span>
-                    ***********************
-                    ****************************
-                    *    ***********************
-                    *********************
-               </span>
+                <h2>Users Lists</h2>
             </React.Fragment>
         );
     }

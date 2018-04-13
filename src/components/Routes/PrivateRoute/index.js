@@ -4,7 +4,7 @@ import {Redirect, Route} from 'react-router-dom';
 
 const PrivateRoute = ({component: Component, ...rest}) => (
     <React.Fragment>
-        <Route {...rest} render={() => (auth ? <Component /> : <Redirect to="/auth/signin"/>)} />
+        {/*<Route {...rest} render={() => (auth ? <Component /> : <Redirect to="/auth/signin"/>)} />*/}
     </React.Fragment>
 );
 
