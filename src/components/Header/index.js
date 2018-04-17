@@ -4,17 +4,15 @@ import AppBar from 'material-ui/AppBar';
 
 import './index.css';
 
-export function Header({brandName, handleDrawer}) {
-    return (
-        <React.Fragment>
-            <AppBar
-                title={brandName}
-                iconClassNameRight="muidocs-icon-navigation-expand-more"
-                onLeftIconButtonClick ={handleDrawer}
-            />
-        </React.Fragment>
-    )
-}
+export const Header = ({brandName, handleDrawer}) => (
+    <React.Fragment>
+        <AppBar
+            title={brandName}
+            iconClassNameRight="muidocs-icon-navigation-expand-more"
+            onLeftIconButtonClick={handleDrawer}
+        />
+    </React.Fragment>
+);
 
 Header.propTypes = {
     brandName: PropTypes.string.isRequired,

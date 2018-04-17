@@ -1,0 +1,9 @@
+.add-list-form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.input-width {
+    width: 80% !important;
+    margin-right: 10px;
+}

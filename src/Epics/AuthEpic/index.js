@@ -1,11 +1,11 @@
-import 'rxjs/add/operator/map';
 import * as types from '../../constants/actions-list';
-import * as endpoints from '../../constants/endpoints';
 import * as authActions from '../../actions/Auth';
+import * as endpoints from '../../constants/endpoints';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/map';
 import {ajax} from 'rxjs/observable/dom/ajax';
 import {Observable} from "rxjs/Observable";
 

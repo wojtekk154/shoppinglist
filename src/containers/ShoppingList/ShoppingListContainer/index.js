@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from "react-redux";
 
-import * as actions from '../../../components/Routes/List';
 import {bindActionCreators} from "redux";
-import {UserListComponentComponent} from '../UserListComponent';
+import {UserListComponentComponent, ListItemsComponent} from '../';
 import {Redirect, Route} from "react-router-dom";
+
 
 class ShoppingContainer extends React.Component {
     constructor(props) {
@@ -28,7 +28,7 @@ class ShoppingContainer extends React.Component {
         return (
             <React.Fragment>
                 <Route path={`${this.props.match.url}`} component={UserListComponentComponent} />
-                <Route path={`${this.props.match.url}user-list`} component={UserListComponentComponent} />
+                <Route path={`${this.props.match.url}:id`} component={ListItemsComponent} />
             </React.Fragment>
         );
     }
@@ -39,7 +39,7 @@ function mapStateToProps(state, local) {
 }
 
 function mapDispatchToProps(dispatch) {
-    return bindActionCreators(actions, dispatch);
+    return bindActionCreators({}, dispatch);
 }
 
 ShoppingContainer.propTypes = {};

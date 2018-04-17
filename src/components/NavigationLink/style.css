@@ -1,0 +1,14 @@
+.link-href {
+    padding: 10px 20px;
+    text-decoration: none;
+}
+
+.link-href.btn-primary {
+    color: #546E7A;
+    font-weight: 500;
+}
+
+.link-href.btn-primary:visited {
+    color: #546E7A;
+    font-weight: 500;
+}

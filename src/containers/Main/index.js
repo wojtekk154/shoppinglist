@@ -14,6 +14,8 @@ import * as constants from '../../constants';
 import {ShoppingContainerComponent} from '../ShoppingList';
 import {AuthContainerComponent} from "../Authentication/AuthContainer/index";
 
+import './index.css';
+
 class MainContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -44,7 +46,7 @@ class MainContainer extends React.Component {
                     <RaisedButton label="Material UI" onClick={this.handleDrawer}/>
                     <MenuUrlLinks linkList={constants.LINKS} handleDrawer={this.handleDrawer}/>
                 </Drawer>
-                <main>
+                <main className="main-container">
                     <Switch>
                         <Route exact path="/" component={ShoppingContainerComponent}/>
                         <Route path="/auth" component={AuthContainerComponent}/>

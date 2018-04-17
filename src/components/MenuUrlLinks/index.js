@@ -6,20 +6,18 @@ import {Link} from 'react-router-dom';
 import Divider from 'material-ui/Divider';
 import {List} from 'material-ui/List';
 
-export function MenuUrlLinks({linkList, handleDrawer}) {
-    return (
-        <React.Fragment>
-            <Divider inset={true}/>
-            <List>
-                {linkList.map(v => (
-                    <MenuItem key={v.path} onClick={handleDrawer}>
-                        <Link to={v.path}>{v.name}</Link>
-                    </MenuItem>))
-                }
-            </List>
-        </React.Fragment>
-    );
-}
+export const MenuUrlLinks = ({linkList, handleDrawer}) => (
+    <React.Fragment>
+        <Divider inset={true}/>
+        <List>
+            {linkList.map(v => (
+                <MenuItem key={v.path} onClick={handleDrawer}>
+                    <Link to={v.path}>{v.name}</Link>
+                </MenuItem>))
+            }
+        </List>
+    </React.Fragment>
+);
 
 MenuUrlLinks.propTypes = {
     linkList: PropTypes.arrayOf(
