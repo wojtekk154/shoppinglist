@@ -10,6 +10,7 @@ const AddList = ({name, handleInput, handleSubmit}) => (
     <React.Fragment>
         <form onSubmit={handleSubmit} className="add-list-form">
             <TextField
+                fullWidth
                 hintText="Name"
                 name='name'
                 value={name}

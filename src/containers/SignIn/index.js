@@ -2,30 +2,18 @@ import React from 'react';
 import {connect} from "react-redux";
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import * as actions from '../../actions/Auth/index';
 import {bindActionCreators} from "redux";
 
-import * as actions from '../../../actions/Auth';
-import {withRouter} from "react-router-dom";
-
-class SignUp extends React.Component {
+class SignIn extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
-            username: '',
             email: '',
-            password: '',
-            password_confirmation: ''
+            password: ''
         };
-
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-
-        this.props.signUpAction(this.state);
     }
 
     handleInput(e) {
@@ -34,48 +22,39 @@ class SignUp extends React.Component {
         });
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        this.props.signInAction(this.state);
+    }
+
     render() {
         return (
             <React.Fragment>
-                <form noValidate onSubmit={this.handleSubmit} className="signup-form">
-                    <h2>Sign Up!</h2>
+                <form onSubmit={this.handleSubmit} className="signup-form">
+                    <h2>Sign In</h2>
                     <div className="input-field">
                         <TextField
-                            hintText="Username"
-                            name="username"
-                            type="text"
-                            onChange={this.handleInput}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <TextField
+                            fullWidth
                             hintText="E-mail"
-                            name="email"
                             type="email"
+                            name="email"
                             onChange={this.handleInput}
                         />
                     </div>
                     <div className="input-field">
                         <TextField
+                            fullWidth
                             hintText="Password"
+                            type="password"
                             name="password"
-                            type="password"
-                            onChange={this.handleInput}
-                        />
-                    </div>
-                    <div className="input-field">
-                        <TextField
-                            hintText="Password Confirmation"
-                            name="password_confirmation"
-                            type="password"
                             onChange={this.handleInput}
                         />
                     </div>
                     <RaisedButton
-                        type="submit"
-                        label="Sign Up"
+                        label="Sign in"
                         primary={true}
                         fullWidth={true}
+                        type="submit"
                     />
                 </form>
             </React.Fragment>
@@ -91,6 +70,7 @@ function mapDispatchToProps(dispatch) {
     return bindActionCreators(actions, dispatch);
 }
 
-SignUp.propTypes = {};
-const SignUpComponent = connect(mapStateToProps, mapDispatchToProps)(SignUp);
-export {SignUpComponent}
+SignIn.propTypes = {};
+
+const SignInComponent = connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export {SignInComponent}

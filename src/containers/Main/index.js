@@ -7,19 +7,17 @@ import {connect} from "react-redux";
 import RaisedButton from 'material-ui/RaisedButton';
 import Drawer from 'material-ui/Drawer';
 
-import * as actionsCreator  from '../../actions';
 
-import {Header, MenuUrlLinks} from '../../components';
+import {Header} from '../../components';
+import {RoutingComponent} from '../../components';
 import * as constants from '../../constants';
-import {ShoppingContainerComponent} from '../ShoppingList';
-import {AuthContainerComponent} from "../Authentication/AuthContainer/index";
+import * as actionsCreator  from '../../actions';
 
 import './index.css';
 
 class MainContainer extends React.Component {
     constructor(props) {
         super(props);
-        console.log(this.props);
         this.state = {
             drawer: false
         };
@@ -41,16 +39,12 @@ class MainContainer extends React.Component {
     render() {
         return (
             <React.Fragment>
-                <Header brandName="ShoppingList" handleDrawer={this.handleDrawer}/>
+                <Header brandName="ShoppingList" handleDrawer={this.handleDrawer} />
                 <Drawer open={this.state.drawer}>
-                    <RaisedButton label="Material UI" onClick={this.handleDrawer}/>
-                    <MenuUrlLinks linkList={constants.LINKS} handleDrawer={this.handleDrawer}/>
+                    <RaisedButton label="Material UI" onClick={this.handleDrawer} />
                 </Drawer>
                 <main className="main-container">
-                    <Switch>
-                        <Route exact path="/" component={ShoppingContainerComponent}/>
-                        <Route path="/auth" component={AuthContainerComponent}/>
-                    </Switch>
+                    <RoutingComponent session={this.props.session} />
                 </main>
             </React.Fragment>
         );

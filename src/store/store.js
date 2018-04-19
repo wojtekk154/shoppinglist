@@ -2,17 +2,17 @@ import {applyMiddleware, compose, createStore} from 'redux';
 import {combineEpics, createEpicMiddleware} from 'redux-observable';
 import loggerMiddleware from 'redux-logger';
 
-import * as authEpics from '../Epics/AuthEpic';
-import * as listEpics from '../Epics/ListEpic';
+import * as epics from '../Epics';
 import appReducers from '../reducers';
 import {loadState, saveState} from "./presistState";
 
 const rootEpic = combineEpics(
-    authEpics.signInEpic,
-    authEpics.signUpEpic,
-    listEpics.getListCollectionEpic,
-    listEpics.createNewListEpic,
-    listEpics.removeListEpic
+    epics.signInEpic,
+    epics.signUpEpic,
+    epics.getListCollectionEpic,
+    epics.createNewListEpic,
+    epics.removeListEpic,
+    epics.LoadListEpic
 );
 
 const epicMiddleware = createEpicMiddleware(rootEpic);

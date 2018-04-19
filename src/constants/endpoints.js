@@ -10,7 +10,7 @@ export const REMOVE_LIST_URL =  (id) => `${API_URL}/list/${id}`;
 
 export const ADD_LIST_ITEM_URL =  (listId) =>  `${API_URL}/list/${listId}/listitem/`;
 export const REMOVE_LIST_ITEM_URL = (id) => `${API_URL}/listitem/${id}`;
-export const GET_LIST_ITEMS_URL = (id) => `${API_URL}/listitem/${id}`;
+export const GET_LIST_ITEMS_URL = (id) => `${API_URL}/list/${id}/listitems/`;
 export const REMOVE_LIST_ITEMS_URL = (id) => `${API_URL}/list/${id}/listitem/`;
 
 //

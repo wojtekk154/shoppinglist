@@ -2,9 +2,9 @@ import React from 'react';
 import {connect} from "react-redux";
 import {bindActionCreators} from "redux";
 
-import * as actions from '../../../actions/List';
+import * as actions from '../../actions/List/index';
 import {List, ListItem} from "material-ui/List";
-import {AddList, NavigationLink} from '../../../components';
+import {AddList, NavigationLink} from '../../components/index';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 
 const floating = {
@@ -51,7 +51,7 @@ class UserListComponent extends React.Component {
         const {lists} = this.props;
 
         return (
-            <React.Fragment>
+            <div>
                 <h2>Users Lists</h2>
                 <h4>AddNewList</h4>
                 <AddList
@@ -64,7 +64,7 @@ class UserListComponent extends React.Component {
                 <List>
                     {lists.map((value, key) => (
                         <ListItem key={`xs-${key}`}>
-                            <NavigationLink path={`/user-list/${value._id}`} name={value.name}/>
+                            <NavigationLink path={`/${value._id}`} name={value.name}/>
                             <FloatingActionButton mini={true}   secondary={true}  className={'right'} style={floating}
                                                   aria-label="remove" type="button" onClick={this.deleteList.bind(this, value._id)}>
                                 <i className="material-icons">remove</i>
@@ -72,7 +72,7 @@ class UserListComponent extends React.Component {
                         </ListItem>
                     ))}
                 </List>
-            </React.Fragment>
+            </div>
         );
     }
 }
@@ -86,5 +86,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 UserListComponent.propTypes = {};
-const UserListComponentComponent = connect(mapStateToProps, mapDispatchToProps)(UserListComponent);
-export {UserListComponentComponent};
+const UserListComponentContainer = connect(mapStateToProps, mapDispatchToProps)(UserListComponent);
+export {UserListComponentContainer}

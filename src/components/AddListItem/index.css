@@ -1,11 +1,20 @@
-.add-list-form {
+.add-list-item-form {
     width: 80%;
-    margin: 0 auto;
+    margin: 1em auto;
 }
 
-.input-container {
-    margin-right: 10px;
+.input-item-container {
+    display: flex;
 }
-.input-container .input-width {
-    width: 30% !important;
+.input-item-container .input-width {
+    width: 37% !important;
+    flex: 1;
+}
+.input-item-container .input-width-unit {
+    width: 37% !important;
+    align-self:flex-end;
+}
+.input-item-container .add-button {
+    margin: 22px 0 10px 20px;
+
 }
